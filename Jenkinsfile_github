@@ -7,7 +7,7 @@ def imageName = "ghcr.io/heewon00/vue_crud_security"
 def git_ops_name = "gitops-kust"
 def dir = "frontend"
 // 본인 Namespace
-def P_NAMESPACE = "default"
+def P_NAMESPACE = "devops"
 // 본인 slave pvc
 def P_SLAVE_PVC = "jenkins-slave-pvc"
 // 본인 이메일
