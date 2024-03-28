@@ -4,11 +4,12 @@ def docker_registry = "ghcr.io"
 
 // 본인 이미지 사용
 def imageName = "ghcr.io/heewon00/vue_crud_security"
-def git_ops_name = "frontend-gitops-kust"
+def git_ops_name = "gitops-kust"
+def dir = "frontend"
 // 본인 Namespace
 def P_NAMESPACE = "default"
 // 본인 slave pvc
-def P_SLAVE_PVC = "jenkins-edu3-slave-pvc"
+def P_SLAVE_PVC = "jenkins-slave-pvc"
 // 본인 이메일
 def P_EMAIL = "bakipark27@gmail.com"
 
@@ -54,7 +55,7 @@ podTemplate(label: label, serviceAccount: 'jenkins-admin', namespace: P_NAMESPAC
                     sh """  
                         cd ~
                         git clone https://${USERNAME}:${PASSWORD}@github.com/${USERNAME}/${git_ops_name}
-                        cd ${git_ops_name}
+                        cd ${git_ops_name}/${dir}
                         git checkout HEAD
                         kustomize edit set image ${imageName}:${TAG}
                         git config --global user.email ${P_EMAIL}
