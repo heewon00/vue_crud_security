@@ -4,14 +4,10 @@ def docker_registry = "myharbor.apps.211-34-231-93.nip.io"
 
 // 본인 이미지 사용
 def imageName = "myharbor.apps.211-34-231-93.nip.io/edu/vue_crud_security"
-def git_ops_name = "gitops-kust"
-def dir = "frontend"
 // 본인 Namespace
 def P_NAMESPACE = "devops-slave"
 // 본인 slave pvc
 def P_SLAVE_PVC = "jenkins-slave-pvc"
-// 본인 이메일
-def P_EMAIL = "bakipark27@gmail.com"
 
 
 def TAG = getTag(gitBranch)
