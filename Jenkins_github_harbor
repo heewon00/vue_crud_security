@@ -34,10 +34,10 @@ podTemplate(label: label, serviceAccount: 'jenkins-admin', namespace: P_NAMESPAC
         checkout scm
       }
       stage ('======== Build image ========') {
-        app = docker.build("http://myharbor.apps.211-34-231-93.nip.io/edu/nginx")
+        app = docker.build("myharbor.apps.211-34-231-93.nip.io/edu/nginx")
       }
       stage ('======== Push image ========') {
-        docker.withRegistry('http://myharbor.apps.211-34-231-93.nip.io', 'harbor_ci') {
+        docker.withRegistry('https://myharbor.apps.211-34-231-93.nip.io', 'harbor_ci') {
           app.push("${env.BUILD_NUMBER}")
           app.push("latest")
         }
