@@ -33,7 +33,7 @@ podTemplate(label: label, serviceAccount: 'jenkins-admin', namespace: P_NAMESPAC
         checkout scm
       }
       stage ('======== Build image ========') {
-        app = docker.build("edu/vue_crud_security")
+        app = docker.build("myharbor.apps.211-34-231-93.nip.io/edu/vue_crud_security")
       }
       stage ('======== Push image ========') {
         docker.withRegistry('https://myharbor.apps.211-34-231-93.nip.io', 'harbor_ci') {
