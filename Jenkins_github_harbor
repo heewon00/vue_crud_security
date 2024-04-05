@@ -4,10 +4,15 @@ def docker_registry = "myharbor.apps.211-34-231-93.nip.io"
 
 // 본인 이미지 사용
 def imageName = "myharbor.apps.211-34-231-93.nip.io/edu/vue_crud_security"
+def git_ops_name = "gitops-kust-harbor"
+def dir = "frontend"
 // 본인 Namespace
 def P_NAMESPACE = "devops-slave"
 // 본인 slave pvc
 def P_SLAVE_PVC = "jenkins-slave-pvc"
+// 본인 이메일
+def P_EMAIL = "bakipark27@gmail.com"
+
 
 
 def TAG = getTag(gitBranch)
@@ -43,6 +48,25 @@ podTemplate(label: label, serviceAccount: 'jenkins-admin', namespace: P_NAMESPAC
                      """
                   }
               }
+        }
+        stage('GitOps update') {
+            container('podman') {
+               withCredentials([usernamePassword(credentialsId: 'github_ci',usernameVariable: 'USERNAME',passwordVariable: 'PASSWORD')]) {
+                    sh """  
+                        cd ~
+                        git clone https://${USERNAME}:${PASSWORD}@github.com/${USERNAME}/${git_ops_name}
+                        cd ${git_ops_name}/${dir}
+                        git checkout HEAD
+                        kustomize edit set image ${imageName}:${TAG}
+                        git config --global user.email ${P_EMAIL}
+                        git config --global user.name ${USERNAME}
+                        git add .
+                        git commit -am 'update image tag  ${TAG} from Jenkins'
+                        cat kustomization.yaml
+                        git push origin HEAD
+                    """
+               } 
+            }
         }
     }
 }
