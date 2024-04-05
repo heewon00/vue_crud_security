@@ -3,7 +3,7 @@ def gitBranch = 'master'
 def docker_registry = "myharbor.apps.211-34-231-93.nip.io"  
 
 // 본인 이미지 사용
-def imageName = "ghcr.io/heewon00/vue_crud_security"
+def imageName = "myharbor.apps.211-34-231-93.nip.io/edu/vue_crud_security"
 def git_ops_name = "gitops-kust"
 def dir = "frontend"
 // 본인 Namespace
