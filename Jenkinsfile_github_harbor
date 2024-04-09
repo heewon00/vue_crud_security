@@ -3,7 +3,6 @@ def gitBranch = 'master'
 
 //harbor registry (수정x)
 def docker_registry = "myharbor.apps.211-34-231-93.nip.io"  
-
 // 본인 이미지 사용
 def imageName = "myharbor.apps.211-34-231-93.nip.io/edu/vue_crud_security"
 // Gitops
