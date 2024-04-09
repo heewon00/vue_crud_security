@@ -7,7 +7,7 @@ def docker_registry = "myharbor.apps.211-34-231-93.nip.io"
 def imageName = "myharbor.apps.211-34-231-93.nip.io/edu/vue_crud_security"
 // 🔥 Gitops
 def git_ops_name = "gitops-kust-harbor"
-def dir = "frontend"
+def dir = "charts/frontend"
 // 🔥 본인 이메일
 def P_EMAIL = "bakipark27@gmail.com"
 // Namespace (수정x)
